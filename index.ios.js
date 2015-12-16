@@ -10,26 +10,39 @@ var {
   StyleSheet,
   Text,
   View,
+  Component
 } = React;
 
-var NavigationExperimentOne = React.createClass({
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-});
+var Router = require('react-native-router');
+
+class HelloPage extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Text>Hello World</Text>
+        );
+    }
+}
+
+var firstRoute = {
+    name: 'Welcome',
+    component: HelloPage
+}
+
+class NavigationExperimentOne extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return(
+            <Router firstRoute={firstRoute} />
+        );
+    }
+}
 
 var styles = StyleSheet.create({
   container: {
